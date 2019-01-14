@@ -2,9 +2,11 @@ import abc
 import argparse
 import json
 import logging
+import os
 import re
 import sys
 import weakref
+from collections import OrderedDict
 from datetime import datetime, timedelta
 from time import sleep
 
@@ -174,11 +176,8 @@ def scrape_html():
     print("Retrieving first set of album elements")
     album_elements = selenium_manager.find_elements_by_xpath(album_xpath)
 
-    # Create output file
-    out_file = open(ALBUMS_JSON_PATH, "w")
-
     # Build album for each one
-    albums = set()
+    albums = OrderedDict()  # Because Python doesn't have OrderedSet by default
     while True:
         cur_album_element = None
         albums_added = 0
@@ -205,7 +204,7 @@ def scrape_html():
             # Add to set
             cur_album = Album(album_title, elements, link, image_url)
             if cur_album not in albums:
-                albums.add(cur_album)
+                albums[cur_album] = None
                 albums_added += 1
 
         # Stop if nothing new got added
@@ -224,11 +223,15 @@ def scrape_html():
         sleep(sleep_time)
         album_elements = selenium_manager.find_elements_by_xpath(album_xpath)
 
-    print("Writing " + str(len(albums)) + " to " + ALBUMS_JSON_PATH)
-    out_file.write(json.dumps(list(albums), default=jsonDefault, indent=4))
-
+    # Clean up browser
     selenium_manager.close_browser()
+
+    # Write outputs
+    print("Writing " + str(len(albums)) + " to " + ALBUMS_JSON_PATH)
+    out_file = open(ALBUMS_JSON_PATH, "w")
+    out_file.write(json.dumps(list(reversed(list(albums.keys()))), default=jsonDefault, indent=4))
     out_file.close()
+
     print("Success!")
 
 
@@ -236,7 +239,38 @@ def generate_page():
     with open(ALBUMS_JSON_PATH) as f:
         albums = json.load(f)
 
-    print(len(albums))
+    jekyll_output = "./jekyll/_posts/"
+    id = 0
+    for album in albums:
+        # Create output file
+        fake_date = datetime(year=1970, month=1, day=1)
+        fake_date = fake_date + timedelta(days=id)
+        fake_date = fake_date.strftime("%Y-%m-%d")
+        post_path = fake_date + "-" + album["title"] + ".md"
+        post_path = post_path.replace(" ", "-")
+        post_path = jekyll_output + post_path
+
+        # Skip files that are already existing
+        if os.path.isfile(post_path):
+            continue
+
+        out_file = open(post_path, "w")
+        out_file.write("---\n")
+        out_file.write("title: " + album["title"] + "\n")
+        out_file.write("elements: " + str(album["elements"]) + "\n")
+        out_file.write("album_url: " + album["album_url"] + "\n")
+        out_file.write("cover_image_url: " + album["cover_image_url"] + "\n")
+        out_file.write("categories: [ Uncategorized ]\n")
+        out_file.write("---\n")
+        out_file.close()
+
+        if id % 25 == 0:
+            print(str(id + 1) + " files written")
+
+        id += 1
+
+    print(str(id + 1) + " files written")
+    print("Success!")
 
 
 def __main__():

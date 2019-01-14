@@ -8,8 +8,6 @@
     
     {% seo %}
     
-    <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/{{site.favicon}}">
-    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   
     <link rel="stylesheet" href="{{site.baseurl}}/assets/css/bootstrap.css">
@@ -25,7 +23,6 @@
 <body>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <a class="navbar-brand font-weight-bolder mr-3" href="{{site.baseurl}}/index.html"><img src="{{site.baseurl}}/{{site.logo}}"></a>
     <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,16 +45,10 @@
     </main>
     
     <footer class="footer pt-5 pb-5 text-center">        
-    <div class="container">        
-          <div class="socials-media">    
-            <ul class="list-unstyled">
-              {% include footer-social.html %}
-            </ul>    
-          </div>
-          {% include footer-copyright.html %}
+        <div class="container">
+            {% include footer-copyright.html %}
         </div>
     </footer>
-    
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
@@ -66,8 +57,6 @@
     <script src="{{site.baseurl}}/assets/js/theme.js"></script>
     
     <script src="{{site.baseurl}}/assets/js/lunr.js"></script>
-    
-    {% include tracking-footer.html %}
     
 </body>
     

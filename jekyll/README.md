@@ -19,7 +19,6 @@
 - Sitemap
 - Cookie Consent & Privacy Policy
 - Integrations:
-    - Disqus Comments
     - Google Analaytics
     - Formspree.io Contact
     - AddThis Integration
@@ -50,20 +49,14 @@ Download or Fork *Pintereso for Jekyll*.
 
         name: 'Pintereso'
         description: 'Jekyll Template for Bloggers & Photographers'
-        logo: 'assets/images/logo.png'
-        favicon: 'assets/images/logo.png'
-        baseurl: '/template-pintereso-bootstrap-jekyll'
-        avatar: 'assets/images/sal.jpg'
-        disqus: 'demowebsite'
+        baseurl: '/albums'
         email: 'wowthemesnet@gmail.com'
         
 - Navigate to <code>includes</code> folder. From there you can edit/add:
 
     - footer copyright - <code>footer-copyright.html</code>
-    - footer social menu - <code>footer-social.html</code>
     - menu header - <code>menu-header.html</code>
     - google analytics script - <code>tracking-header.html</code>
-    - addthis script - <code>tracking-footer.html</code>
 
 - Start blogging! Add your .md posts in <code>_posts</code>. If you download the template you will notice it already has a few as an example. 
 

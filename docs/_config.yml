@@ -1,6 +1,6 @@
 # Site
 name: "Henry Poon's Photo Albums"
-baseurl: "/albums"
+baseurl: "/PhotoAlbumsSite"
 email: "henry.yh.poon@gmail.com"
 
 include: ["_pages"]

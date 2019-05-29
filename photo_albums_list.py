@@ -239,7 +239,7 @@ def generate_page():
     with open(ALBUMS_JSON_PATH) as f:
         albums = json.load(f)
 
-    jekyll_output = "./jekyll/_posts/"
+    jekyll_output = "./docs/_posts/"
     id = 0
     for album in albums:
         # Create output file
@@ -252,6 +252,7 @@ def generate_page():
 
         # Skip files that are already existing
         if os.path.isfile(post_path):
+            id += 1
             continue
 
         out_file = open(post_path, "w")

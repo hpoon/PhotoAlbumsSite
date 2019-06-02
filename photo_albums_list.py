@@ -229,7 +229,7 @@ def scrape_html():
     # Write outputs
     print("Writing " + str(len(albums)) + " to " + ALBUMS_JSON_PATH)
     out_file = open(ALBUMS_JSON_PATH, "w")
-    out_file.write(json.dumps(list(reversed(list(albums.keys()))), default=jsonDefault, indent=4))
+    out_file.write(json.dumps(list(reversed(list(albums.keys()))), default=jsonDefault, indent=4, sort_keys=True))
     out_file.close()
 
     print("Success!")

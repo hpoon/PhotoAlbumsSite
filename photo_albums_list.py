@@ -81,6 +81,11 @@ def scrape_html(file: str):
 
 
 def generate_page():
+    ignored_albums = {
+        "Blog Photos",
+        "Half-Life 2 Leaked Beta"
+    }
+
     with open(ALBUMS_JSON_PATH) as f:
         albums = json.load(f)
 
@@ -91,12 +96,14 @@ def generate_page():
         fake_date = datetime(year=1970, month=1, day=1)
         fake_date = fake_date + timedelta(days=id)
         fake_date = fake_date.strftime("%Y-%m-%d")
+
+        title = album["title"]
         post_path = fake_date + "-" + album["title"] + ".md"
         post_path = post_path.replace(" ", "-")
         post_path = jekyll_output + post_path
 
         # Skip files that are already existing
-        if os.path.isfile(post_path):
+        if os.path.isfile(post_path) or title in ignored_albums:
             id += 1
             continue
 

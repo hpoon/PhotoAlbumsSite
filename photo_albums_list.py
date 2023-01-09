@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+from collections import OrderedDict
 from datetime import datetime, timedelta
 
 import attr
@@ -15,11 +16,15 @@ def jsonDefault(OrderedDict):
 
 @attr.s(frozen=True)
 class Album:
-
     title = attr.ib(type=str)
     elements = attr.ib(type=int)
     album_url = attr.ib(type=str)
     cover_image_url = attr.ib(type=str)
+
+    def id(self):
+        # Don't use the cover image in the hash because the URL is not unique
+        # Don't use the number of elements in the hash because I always add/delete things
+        return hash((self.title, self.album_url))
 
 
 ALBUMS_JSON_PATH = "albums.json"
@@ -33,7 +38,12 @@ def scrape_html(file: str):
 
     with open(ALBUMS_JSON_PATH, "r+") as albums_file, open(file) as html_file:
         album_file_data = json.load(albums_file)
-        existing_albums = len(album_file_data)
+
+        # Read what is already existing so we know how to dedupe
+        albums = OrderedDict()
+        for obj in album_file_data:
+            album = Album(obj["title"], obj["elements"], obj["album_url"], obj["cover_image_url"])
+            albums[album.id()] = album
 
         html = html_file.read()
         soup = BeautifulSoup(html, "html.parser")
@@ -43,13 +53,9 @@ def scrape_html(file: str):
         album_elements = soup.findAll("a", {"class": album_class})
 
         # Build album for each one
-        total_albums = len(album_elements)
-        print("Found " + str(total_albums) + " albums")
+        print("Found " + str(len(album_elements)) + " albums")
         albums_added = 0
-        elements_to_add = total_albums - existing_albums
-        for i in reversed(range(0, elements_to_add)):
-            album_element = album_elements[i]
-
+        for album_element in reversed(album_elements):
             # Get album title
             album_title_element = album_element.find("div", {"class": album_title_class})
             album_title = album_title_element.text
@@ -66,16 +72,17 @@ def scrape_html(file: str):
             image_url = album_cover_image_element.get("style") \
                 .replace("background-image: url(\"", "").replace("\");", "")
 
-            # Add to set
-            album_file_data.append(Album(album_title, elements, link, image_url))
+            # Add to dictionary for deduping
+            album = Album(album_title, elements, link, image_url)
+            albums[album.id()] = album
             albums_added += 1
 
         print("Added " + str(albums_added) + " albums")
 
         # Write outputs
-        print("Writing " + str(len(album_file_data)) + " to " + ALBUMS_JSON_PATH)
+        print("Writing " + str(len(albums)) + " to " + ALBUMS_JSON_PATH)
         albums_file.seek(0)
-        albums_file.write(json.dumps(album_file_data, default=jsonDefault, indent=4, sort_keys=True))
+        albums_file.write(json.dumps(list(albums.values()), default=jsonDefault, indent=4, sort_keys=True))
 
         print("Success!")
 

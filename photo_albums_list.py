@@ -1,8 +1,12 @@
 import argparse
 import json
 import os
+import pathlib
 import re
+import shutil
 import sys
+import urllib.request
+import uuid
 from collections import OrderedDict
 from datetime import datetime, timedelta
 
@@ -28,6 +32,7 @@ class Album:
 
 
 ALBUMS_JSON_PATH = "albums.json"
+IMAGE_PATH = "docs/assets/img"
 
 
 def scrape_html(file: str):
@@ -72,8 +77,15 @@ def scrape_html(file: str):
             image_url = album_cover_image_element.get("style") \
                 .replace("background-image: url(\"", "").replace("\");", "")
 
+            # Download URL
+            image_local_path = os.path.join(
+                IMAGE_PATH,
+                (album_title + "_" + str(uuid.uuid4()) + ".jpg").replace(" ", "").replace("'", ""))
+            with urllib.request.urlopen(image_url) as response, open(image_local_path, 'wb') as out_file:
+                shutil.copyfileobj(response, out_file)
+
             # Add to dictionary for deduping
-            album = Album(album_title, elements, link, image_url)
+            album = Album(album_title, elements, link, image_local_path)
             albums[album.id()] = album
             albums_added += 1
 

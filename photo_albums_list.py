@@ -33,6 +33,7 @@ class Album:
 
 ALBUMS_JSON_PATH = "albums.json"
 IMAGE_PATH = "docs/assets/img"
+MARKUP_PATH = "/assets/img/"
 
 
 def scrape_html(file: str):
@@ -78,14 +79,13 @@ def scrape_html(file: str):
                 .replace("background-image: url(\"", "").replace("\");", "")
 
             # Download URL
-            image_local_path = os.path.join(
-                IMAGE_PATH,
-                (album_title + "_" + str(uuid.uuid4()) + ".jpg").replace(" ", "").replace("'", ""))
+            filename = (album_title + "_" + str(uuid.uuid4()) + ".jpg").replace(" ", "").replace("'", "")
+            image_local_path = os.path.join(IMAGE_PATH, filename)
             with urllib.request.urlopen(image_url) as response, open(image_local_path, 'wb') as out_file:
                 shutil.copyfileobj(response, out_file)
 
             # Add to dictionary for deduping
-            album = Album(album_title, elements, link, image_local_path)
+            album = Album(album_title, elements, link, os.path.join(MARKUP_PATH, filename))
             albums[album.id()] = album
             albums_added += 1
 

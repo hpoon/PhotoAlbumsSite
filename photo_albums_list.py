@@ -1,7 +1,6 @@
 import argparse
 import json
 import os
-import pathlib
 import re
 import shutil
 import sys
@@ -45,7 +44,7 @@ def scrape_html(file: str):
     with open(ALBUMS_JSON_PATH, "r+") as albums_file, open(file) as html_file:
         album_file_data = json.load(albums_file)
 
-        # Read what is already existing so we know how to dedupe
+        # Read what is already existing, so we know how to dedupe
         albums = OrderedDict()
         for obj in album_file_data:
             album = Album(obj["title"], obj["elements"], obj["album_url"], obj["cover_image_url"])
@@ -78,15 +77,22 @@ def scrape_html(file: str):
             image_url = album_cover_image_element.get("style") \
                 .replace("background-image: url(\"", "").replace("\");", "")
 
-            # Download URL
+            # Generate the filename
             filename = (album_title + "_" + str(uuid.uuid4()) + ".jpg").replace(" ", "").replace("'", "")
+
+            # Check if dictionary already has it
+            album = Album(album_title, elements, link, os.path.join(MARKUP_PATH, filename))
+            if album.id() in albums:
+                continue
+
+            # Add to dictionary for deduping
+            albums[album.id()] = album
+
+            # Download image since we don't have it already
             image_local_path = os.path.join(IMAGE_PATH, filename)
             with urllib.request.urlopen(image_url) as response, open(image_local_path, 'wb') as out_file:
                 shutil.copyfileobj(response, out_file)
 
-            # Add to dictionary for deduping
-            album = Album(album_title, elements, link, os.path.join(MARKUP_PATH, filename))
-            albums[album.id()] = album
             albums_added += 1
 
         print("Added " + str(albums_added) + " albums")
@@ -135,10 +141,6 @@ def generate_page():
         out_file.write("categories: [ Uncategorized ]\n")
         out_file.write("---\n")
         out_file.close()
-
-        if id % 25 == 0:
-            print(str(id + 1) + " files written")
-
         id += 1
 
     print(str(id + 1) + " files written")

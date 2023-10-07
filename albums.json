@@ -1852,5 +1852,47 @@
         "cover_image_url": "/assets/img/Amsterdam_f860925f-7767-42c7-871b-92972518ab9a.jpg",
         "elements": 34,
         "title": "Amsterdam"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipO1Rv4cvAXDhCjyD8Dmu4Q0jsqkk5gA6_Zk5f0LrSiXsDnAJi4yneu8XA-dJpobiw?key=a0w2blFCNEp2ZUQ5R2dZN1lfSnhzTVlyck1ZSTZB",
+        "cover_image_url": "/assets/img/Barcelona_3f271361-b199-4341-885d-48726203de52.jpg",
+        "elements": 6,
+        "title": "Barcelona"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipM0xpGZmvH2jsObUHdMT9bW4hGca1fWOGHbI3otyOF8ZFxNEJx9E-zpNaUcZJIonA?key=MEdzLTZVajBCSXhsVVllSUhCRXdIOXRmMUFiZU13",
+        "cover_image_url": "/assets/img/Valencia_44bc850f-daa1-4f50-96c0-4d30af226d26.jpg",
+        "elements": 32,
+        "title": "Valencia"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipPbWULxgvf2nUjqfwiP1_zqbvO7QA04F6I2lOTwdrbvCQby5VqbdkPX9845XgaIEw?key=UWU2b3BoVWdhaFZGcEdmTHVJNU02LWc5akhKVzV3",
+        "cover_image_url": "/assets/img/Ibiza_222084a8-5fb3-4025-8927-fa2cfeedc9de.jpg",
+        "elements": 33,
+        "title": "Ibiza"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipNzx8fFfjwzkSld3yYK_bkqtk4HUWeQw1Ly0mYj5HX-Fp-bL05fbcJ8wC7l6XZPNA?key=VU1yNEItV1Y4bml1OFhZM1kyMDRpVmNuV2xWZV9R",
+        "cover_image_url": "/assets/img/CinqueTerre_2fc764ca-8add-41cc-9514-bcbe45e2c946.jpg",
+        "elements": 45,
+        "title": "Cinque Terre"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipOOcLxdX1py-fuKUj-ja3Dt21TAzptwgx_JD25qXvnyeS6Z9cD0V6G-J3jpB_o32w?key=cjBTUjluNzdhcGxZM045aUdROFkyOUdjQ2RiTnR3",
+        "cover_image_url": "/assets/img/Corsica_98722852-c1f3-48c0-b47d-6369ac553bea.jpg",
+        "elements": 39,
+        "title": "Corsica"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipNiRQBKlytXjcyvVcvXZ2dGuzA9ZiImOOXu5qGXjPBCnz3PzSGl1NQ_7_8Uo7rlBA?key=UEgxX0RDQjZVVGR6bVVzREtKZlk0TzhxcDVJUDB3",
+        "cover_image_url": "/assets/img/Pisa_7de3ef6c-7628-4682-9da0-5733f8eba878.jpg",
+        "elements": 13,
+        "title": "Pisa"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipOdkkmH9dWB19V-8G6TpI7e8ieJizZ59lb9gol5Q_mra1O__uAzJfvkz5_2bL2lSg?key=WENhbExmdF8tS1pVcmZKbzEzZVJYcTF5NC1NRW5B",
+        "cover_image_url": "/assets/img/CelebrityEdge_25efb10d-7297-4abd-a74b-a6a75a7cebb8.jpg",
+        "elements": 58,
+        "title": "Celebrity Edge"
     }
 ]

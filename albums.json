@@ -1936,5 +1936,71 @@
         "cover_image_url": "/assets/img/CelebrityApex_b4be1929-b6a2-44b7-b93d-2fd7a40572ed.jpg",
         "elements": 51,
         "title": "Celebrity Apex"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipOKqK7v89CJRyYR0JAWQbjiZ1EjguSFg9HFdHzFEt4bNxZV5dOjONJKxPc_iY91vg?key=RzU3ajVkLVdiUW5LdjZHWlJQSGN2cE1fbGZkT1RR",
+        "cover_image_url": "/assets/img/ScenicWorld,BlueMountains_f2202be7-c34b-4c20-a5e9-99e55014c420.jpg",
+        "elements": 14,
+        "title": "Scenic World, Blue Mountains"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipMLRvouMpAj561I81zfjb1TGH9KH0J58_54zvx3no0spO8eS2O4xqPGiETTWuql1A?key=RWZWVnhySC12dUgtaGZDcXdvZXF3X0g0UU9NYkZn",
+        "cover_image_url": "/assets/img/Sydney_98dc31ef-2d8c-4174-863f-63abf7d3533d.jpg",
+        "elements": 64,
+        "title": "Sydney"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipOoH3wSFJFrQaI-a-UuBn_2K0idnO6zwy9_-QT7",
+        "cover_image_url": "/assets/img/GreatBarrierReef_bb24a950-3430-4efa-8c1b-88c2978c85a3.jpg",
+        "elements": 41,
+        "title": "Great Barrier Reef"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipNJsrwsvn6oBDns7m5QMsjQqvZx-MeRe17XoCaN",
+        "cover_image_url": "/assets/img/KurandaSkyrail_047044ce-d8a3-4903-9a57-19583c761d68.jpg",
+        "elements": 23,
+        "title": "Kuranda Skyrail"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipNU0VKt9UsKUTDvVTmF4AG52nKkerkNhcOKI4DA",
+        "cover_image_url": "/assets/img/Cairns_cc834fb7-306b-44c5-8034-1c82056409e2.jpg",
+        "elements": 20,
+        "title": "Cairns"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipMYTlmqY9G-nwb2PWLe3PCpbdazicUy1EGlsvSr",
+        "cover_image_url": "/assets/img/OakridgeWinery_f0e70ba5-5179-49e7-a7a2-e9ca1e7f55d0.jpg",
+        "elements": 11,
+        "title": "Oakridge Winery"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipN38rnRPWzz1UjxC_aoJaf7X-eDx3SSPxeCIABJ",
+        "cover_image_url": "/assets/img/Melbourne_30628ab7-55d6-4474-84a5-49509b1148eb.jpg",
+        "elements": 71,
+        "title": "Melbourne"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipM5OqHrvjBbmlV3rFdAyA-Wcznv91oXm9nOujD7",
+        "cover_image_url": "/assets/img/HobbitonMovieSet_bb443f45-6907-42da-b76e-d5b490a4693d.jpg",
+        "elements": 54,
+        "title": "Hobbiton Movie Set"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipM4EJ31vMFUwwqi_hsFG1NxCuibXvvfXV1jhmOP",
+        "cover_image_url": "/assets/img/TePuia,RotoruaGeothermalPark_51e24806-75aa-4c81-8bbf-4b4e71eba2ee.jpg",
+        "elements": 16,
+        "title": "Te Puia, Rotorua Geothermal Park"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipM-Zgwmx6edSpnvYs2HN6UpERm0srMSNcIl9gcb",
+        "cover_image_url": "/assets/img/WaitomoRuakuriCave_b12cac78-b33d-4c43-be58-c24f209decf9.jpg",
+        "elements": 31,
+        "title": "Waitomo Ruakuri Cave"
+    },
+    {
+        "album_url": "https://photos.google.com/album/AF1QipP8oqIgmmXP2tO-oCSActz6POoa7mMHp2qxCaKr",
+        "cover_image_url": "/assets/img/Auckland_2b99e3d5-435c-480f-a1e9-ee8167a4e755.jpg",
+        "elements": 16,
+        "title": "Auckland"
     }
 ]

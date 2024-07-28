@@ -89,6 +89,7 @@ def scrape_html(file: str):
             albums[album.id()] = album
 
             # Download image since we don't have it already
+            print(f"Image URL: {image_url}")
             image_local_path = os.path.join(IMAGE_PATH, filename)
             with urllib.request.urlopen(image_url) as response, open(image_local_path, 'wb') as out_file:
                 shutil.copyfileobj(response, out_file)

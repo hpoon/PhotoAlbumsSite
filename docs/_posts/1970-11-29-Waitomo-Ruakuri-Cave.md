@@ -1,7 +1,7 @@
 ---
 title: Waitomo Ruakuri Cave
 elements: 31
-album_url: https://photos.google.com/album/AF1QipM-Zgwmx6edSpnvYs2HN6UpERm0srMSNcIl9gcb
-cover_image_url: /assets/img/WaitomoRuakuriCave_b12cac78-b33d-4c43-be58-c24f209decf9.jpg
+album_url: https://photos.google.com/share/AF1QipPxP140aXm2Sjcnc72OnSWCeoVfbMLIMIjvTT8tdpkACu2I25ZSjml8Wi4qG3bUYw?key=aThKRzZ5OUNzZ2M3UUFkQUgyemFoNzdmWkNfYnhB
+cover_image_url: /assets/img/WaitomoRuakuriCave_9bf37865-16e1-4b27-b8f4-a1f22ae84dd3.jpg
 categories: [ Oceania, New Zealand ]
 ---

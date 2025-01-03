@@ -2002,5 +2002,23 @@
         "cover_image_url": "/assets/img/Auckland_1bb27b0f-d53d-4834-8209-b0ba7dd6e15b.jpg",
         "elements": 16,
         "title": "Auckland"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipP9LmKPFaqD_xGC36tbX9WojtP5COepAxaESXfqfhu28VnJXJgt6H94lVs1c3K30A?key=aEtWT0IxNTR4MmRVTE5RRG9fZHVyZ2JuY09BUUVB",
+        "cover_image_url": "/assets/img/Budapest_5eea7fba-685c-43e0-98f7-aeb165ada9a7.jpg",
+        "elements": 52,
+        "title": "Budapest"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipO0BKetzDOlOC0_Q7z7scDvq-8pNnHGnW6Gc0pkOT6u2w3tl6NN0ISQs-NMbM3j8g?key=T1VyRnN4QUh0WkQ4anhqZVNoUVRPaFR0NTd6VGJn",
+        "cover_image_url": "/assets/img/Bratislava_2ced0cc3-f9b3-4211-9d6c-ec8e20e2e851.jpg",
+        "elements": 37,
+        "title": "Bratislava"
+    },
+    {
+        "album_url": "https://photos.google.com/share/AF1QipOxGdbxQ-AqUcknGad4LP5GxUpfpgQS4JoQ5j6DDMncSDS47bei42N7_IsM5-Eu0A?key=aFNILUdzTDZaRFFGbGVrYTlfMlo0NjlGWkMtTl9R",
+        "cover_image_url": "/assets/img/Vienna_75096ca0-a505-4a84-9107-76a62e613c76.jpg",
+        "elements": 180,
+        "title": "Vienna"
     }
 ]

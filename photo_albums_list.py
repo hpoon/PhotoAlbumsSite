@@ -151,7 +151,7 @@ def generate_page():
 
         out_file = open(post_path, "w")
         out_file.write("---\n")
-        out_file.write("title: " + album["title"] + "\n")
+        out_file.write("title: \"" + album["title"] + "\"\n")
         out_file.write("elements: " + str(album["elements"]) + "\n")
         out_file.write("album_url: " + album["album_url"] + "\n")
         out_file.write("cover_image_url: " + album["cover_image_url"] + "\n")

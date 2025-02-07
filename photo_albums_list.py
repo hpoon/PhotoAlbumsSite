@@ -1,7 +1,6 @@
 import argparse
 import json
 import os
-import re
 import shutil
 import sys
 import urllib.request
@@ -10,6 +9,7 @@ from collections import OrderedDict
 from datetime import datetime, timedelta
 
 import attr
+from PIL import Image
 from bs4 import BeautifulSoup
 
 
@@ -36,10 +36,9 @@ MARKUP_PATH = "/assets/img/"
 
 
 def scrape_html(file: str):
-    album_class = "MTmRkb"
-    elements_class = "UV4Xae"
-    album_title_class = "mfQCMe"
-    album_cover_class = "FLmEnf"
+    album_class = "w-full"
+    album_title_class = "text-immich-primary"
+    album_cover_class = "size-full"
 
     with open(ALBUMS_JSON_PATH, "r+") as albums_file, open(file) as html_file:
         album_file_data = json.load(albums_file)
@@ -62,26 +61,23 @@ def scrape_html(file: str):
         albums_added = 0
         for album_element in reversed(album_elements):
             # Get album title
-            album_title_element = album_element.find("div", {"class": album_title_class})
+            album_title_element = album_element.find("p", {"class": album_title_class})
             album_title = album_title_element.text
-
-            # Get number of elements in album
-            elements_element = album_element.find("div", {"class": elements_class})
-            elements = int(re.sub("[^0-9]", "", elements_element.text))
 
             # Extract link
             link = album_element.get("href").replace("photosgooglecom", "photos.google.com")
 
             # Extract album cover image url
-            album_cover_image_element = album_element.find("div", {"class": album_cover_class})
-            image_url = album_cover_image_element.get("style") \
-                .replace("background-image: url(\"", "").replace("\");", "")
+            album_cover_image_element = album_element.find("img", {"class": album_cover_class})
+            image_url = f"{os.path.dirname(file)}/{album_cover_image_element.get('src')}" \
+                .replace("%20", " ").replace("%25", "%")
 
             # Generate the filename
-            filename = (album_title + "_" + str(uuid.uuid4()) + ".jpg").replace(" ", "").replace("'", "")
+            filename = (album_title + "_" + str(uuid.uuid4()) + ".jpg") \
+                .replace(" ", "").replace("'", "").replace(":", "_")
 
             # Check if dictionary already has it
-            album = Album(album_title, elements, link, os.path.join(MARKUP_PATH, filename))
+            album = Album(album_title, -1, link, os.path.join(MARKUP_PATH, filename))
             if album.id() in albums:
                 continue
 
@@ -90,9 +86,29 @@ def scrape_html(file: str):
 
             # Download image since we don't have it already
             print(f"Image URL: {image_url}")
-            image_local_path = os.path.join(IMAGE_PATH, filename)
-            with urllib.request.urlopen(image_url) as response, open(image_local_path, 'wb') as out_file:
-                shutil.copyfileobj(response, out_file)
+            image_local_path = os.path.join(
+                IMAGE_PATH,
+                filename.replace(":", "_"))
+
+            # Open image with PIL
+            with Image.open(image_url) as img:
+                width, height = img.size
+                min_dim = min(width, height)
+
+                # Calculate cropping box (centered square)
+                left = (width - min_dim) // 2
+                top = (height - min_dim) // 2
+                right = left + min_dim
+                bottom = top + min_dim
+
+                # Crop the image
+                img_cropped = img.crop((left, top, right, bottom))
+
+                # Resize to 202x202
+                img_resized = img_cropped.resize((202, 202), Image.LANCZOS)
+
+                # Save the final image
+                img_resized.save(image_local_path, "JPEG", quality=95)
 
             albums_added += 1
 
@@ -125,7 +141,7 @@ def generate_page():
 
         title = album["title"]
         post_path = fake_date + "-" + album["title"] + ".md"
-        post_path = post_path.replace(" ", "-")
+        post_path = post_path.replace(" ", "-").replace(":", "")
         post_path = jekyll_output + post_path
 
         # Skip files that are already existing

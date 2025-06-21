@@ -62,6 +62,9 @@ def scrape_html(file: str):
         for album_element in reversed(album_elements):
             # Get album title
             album_title_element = album_element.find("p", {"class": album_title_class})
+            if album_title_element is None:
+                continue
+
             album_title = album_title_element.text
 
             # Extract link

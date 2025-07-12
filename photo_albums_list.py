@@ -1,12 +1,11 @@
 import argparse
 import json
 import os
-import shutil
 import sys
-import urllib.request
 import uuid
 from collections import OrderedDict
 from datetime import datetime, timedelta
+from pathlib import Path
 
 import attr
 from PIL import Image
@@ -31,14 +30,22 @@ class Album:
 
 
 ALBUMS_JSON_PATH = "albums.json"
-IMAGE_PATH = "docs/assets/img"
-MARKUP_PATH = "/assets/img/"
+IMAGE_PATH = Path("docs/assets/img")
+MARKUP_PATH = Path("/assets/img/")
 
 
 def scrape_html(file: str):
-    album_class = "w-full"
+    file = Path(file)
+    album_classes = {
+        'flex',
+        'w-full',
+        'border-b',
+        'border-gray-200',
+        'transition-all',
+        'dark:border-gray-600',
+        'dark:text-immich-gray'
+    }
     album_title_class = "text-immich-primary"
-    album_cover_class = "size-full"
 
     with open(ALBUMS_JSON_PATH, "r+") as albums_file, open(file) as html_file:
         album_file_data = json.load(albums_file)
@@ -54,33 +61,25 @@ def scrape_html(file: str):
 
         # Extract the elements for all
         print("Retrieving first set of album elements")
-        album_elements = soup.findAll("a", {"class": album_class})
+        album_elements = [
+            div for div in soup.find_all('div', class_=True)
+            if len(album_classes) == len(album_classes.intersection(set(div.get('class'))))
+        ]
 
         # Build album for each one
         print("Found " + str(len(album_elements)) + " albums")
         albums_added = 0
         for album_element in reversed(album_elements):
-            # Get album title
-            album_title_element = album_element.find("p", {"class": album_title_class})
-            if album_title_element is None:
-                continue
-
-            album_title = album_title_element.text
-
-            # Extract link
-            link = album_element.get("href").replace("photosgooglecom", "photos.google.com")
-
-            # Extract album cover image url
-            album_cover_image_element = album_element.find("img", {"class": album_cover_class})
-            image_url = f"{os.path.dirname(file)}/{album_cover_image_element.get('src')}" \
-                .replace("%20", " ").replace("%25", "%")
+            title = album_element.find("p", {"class": album_title_class}).text
+            link = album_element.find("a").get("href")
+            image_url = album_element.find("img").get("src").replace("%20", " ").replace("%25", "%")
 
             # Generate the filename
-            filename = (album_title + "_" + str(uuid.uuid4()) + ".jpg") \
+            filename = (title + "_" + str(uuid.uuid4()) + ".jpg") \
                 .replace(" ", "").replace("'", "").replace(":", "_")
 
             # Check if dictionary already has it
-            album = Album(album_title, -1, link, os.path.join(MARKUP_PATH, filename))
+            album = Album(title, -1, link, os.path.join(MARKUP_PATH, filename))
             if album.id() in albums:
                 continue
 
@@ -94,7 +93,7 @@ def scrape_html(file: str):
                 filename.replace(":", "_"))
 
             # Open image with PIL
-            with Image.open(image_url) as img:
+            with Image.open(file.parent / image_url) as img:
                 width, height = img.size
                 min_dim = min(width, height)
 

@@ -79,7 +79,7 @@ def scrape_html(file: str):
                 .replace(" ", "").replace("'", "").replace(":", "_")
 
             # Check if dictionary already has it
-            album = Album(title, -1, link, os.path.join(MARKUP_PATH, filename))
+            album = Album(title, -1, link, (MARKUP_PATH / filename).as_posix())
             if album.id() in albums:
                 continue
 

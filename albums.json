@@ -2167,55 +2167,55 @@
     },
     {
         "album_url": "https://photos.henrypoon.com/share/dYJ5dbQWHRcxO4qqFWTFFifgGbIUGIbtjpTZqAO0CkQB-IQwRZc-A3WBTkZd3CjYtIw",
-        "cover_image_url": "\\assets\\img\\Gallipoli_f77b2a1b-9787-4798-bcb8-81ca1e32fd41.jpg",
+        "cover_image_url": "/assets/img/Gallipoli_f77b2a1b-9787-4798-bcb8-81ca1e32fd41.jpg",
         "elements": -1,
         "title": "Gallipoli"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/tLj854gJcV_JeSodlxxpfqI9bkLPtLXVnALXd7Rn4Z4ATbU0bJ-XnYLbesw-Idh4zSc",
-        "cover_image_url": "\\assets\\img\\Ayvalik_986497f5-a90a-4fd6-90fe-d8d6ca39c53a.jpg",
+        "cover_image_url": "/assets/img/Ayvalik_986497f5-a90a-4fd6-90fe-d8d6ca39c53a.jpg",
         "elements": -1,
         "title": "Ayvalik"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/J_oWiJUBvrzOjgJhL47It0uaoHAmgMv5NvCBom_OQzy2XXlfqbCfIqySyNBTCp07EOs",
-        "cover_image_url": "\\assets\\img\\Troy_c4f0dc4c-2fcf-4076-8b99-611c0d9d3323.jpg",
+        "cover_image_url": "/assets/img/Troy_c4f0dc4c-2fcf-4076-8b99-611c0d9d3323.jpg",
         "elements": -1,
         "title": "Troy"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/MMzxi7HTf22O_d_pQ3CWUQE2t1Ik9fzxQMYNmM_OYSUpVhpc02FMt7lVfGWi67byQ_s",
-        "cover_image_url": "\\assets\\img\\PergamonAcropolis_0d367c65-3e1d-4166-9159-93e1863446b0.jpg",
+        "cover_image_url": "/assets/img/PergamonAcropolis_0d367c65-3e1d-4166-9159-93e1863446b0.jpg",
         "elements": -1,
         "title": "Pergamon Acropolis"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/EmD27SanuDrHq7Rxx1ppjC9pcuChE58BDUwR4lAX1hiK6b4mZ-ih7oxyT73Nl4R1FDg",
-        "cover_image_url": "\\assets\\img\\Ephesus_d24f11a4-f15c-4d87-bc91-049f668e6950.jpg",
+        "cover_image_url": "/assets/img/Ephesus_d24f11a4-f15c-4d87-bc91-049f668e6950.jpg",
         "elements": -1,
         "title": "Ephesus"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/0Tv7sW6MSRXsWQSo_SN0c9IVKLy2CMLz7HFh5xPLMeZ3aaPVlfjPJhkTCFMFCtBeWEs",
-        "cover_image_url": "\\assets\\img\\Sel\u00e7uk_9b12d2b3-ebae-4b78-9293-1913bd4ae86e.jpg",
+        "cover_image_url": "/assets/img/Sel\u00e7uk_9b12d2b3-ebae-4b78-9293-1913bd4ae86e.jpg",
         "elements": -1,
         "title": "Sel\u00e7uk"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/xnFi_tpEJrcpbr0ngX0RGdE9Y7b1bgwKmLhEonzE9eMwCLEfmlpLhTSmgnPGbYvomOs",
-        "cover_image_url": "\\assets\\img\\Laodicea_ac77d143-60f9-4fbf-9871-48828216f295.jpg",
+        "cover_image_url": "/assets/img/Laodicea_ac77d143-60f9-4fbf-9871-48828216f295.jpg",
         "elements": -1,
         "title": "Laodicea"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/-nBGmFr6KGO1CywQz_39cNRhdesie9C2N_VGjAAqTYtdpPAFhhZZUUa9H_OdZwZJtLQ",
-        "cover_image_url": "\\assets\\img\\Hierapolis_af17ecd3-3f9a-49b5-92f8-952c24baf7cf.jpg",
+        "cover_image_url": "/assets/img/Hierapolis_af17ecd3-3f9a-49b5-92f8-952c24baf7cf.jpg",
         "elements": -1,
         "title": "Hierapolis"
     },
     {
         "album_url": "https://photos.henrypoon.com/share/cbhR4i5hkqO3FWxji_PRpX6Qy40WUK3yxbH2ySkeTUrH_AaNSC90Ul1NBK8rA3cFcfY",
-        "cover_image_url": "\\assets\\img\\Istanbul_b1f1c546-e3d2-4510-9715-afd933419d12.jpg",
+        "cover_image_url": "/assets/img/Istanbul_b1f1c546-e3d2-4510-9715-afd933419d12.jpg",
         "elements": -1,
         "title": "Istanbul"
     }

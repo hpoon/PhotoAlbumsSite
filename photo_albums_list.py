@@ -45,7 +45,7 @@ def scrape_html(file: str):
         'dark:border-gray-600',
         'dark:text-immich-gray'
     }
-    album_title_class = "text-immich-primary"
+    album_title_class = "text-primary"
 
     with open(ALBUMS_JSON_PATH, "r+") as albums_file, open(file) as html_file:
         album_file_data = json.load(albums_file)
